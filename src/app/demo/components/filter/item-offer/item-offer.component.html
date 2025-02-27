@@ -1,0 +1,55 @@
+<div id="item-offer" fxLayout="column" fxLayoutAlign="start start" >
+    <p-card [ngStyle]="{width: '100%'}">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxFlex="calc(100% - 130px)" fxLayout="row" fxLayoutAlign="space-between center">
+                  <!--departureTime-->
+                <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+                    <div class="font-bold"> Departure</div>
+                    <div class="time"> {{item.departureTime | formatTime  }}</div>
+                    <div> {{item.departureCity}}</div>
+                </div>
+                <!-- duration-->
+                <div  fxLayout="row" fxLayoutGap="10px" class="duration">
+                    <div>________________</div>
+                    <div id="dura-font">{{item.departureTime | dateDifference : item.arrivalTime }}</div>
+                    <div>_________________</div>
+                </div>
+                <!--arrivalTime-->
+                <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+                    <div class="font-bold"> Arrival</div>
+                    <div class="time"> {{item.arrivalTime | formatTime  }}</div>
+                    <div> {{item.arrivalCity }}</div>
+                </div>
+            </div>
+            <div  fxLayout="column" fxLayoutAlign="center center"  fxFlex="130px" class="book">
+
+                   <div style="width: 100%;" [pTooltip]="'To book your bus, please log in to your client account. If you dont have an account yet'"
+                        [tooltipDisabled]="isLoginUser">
+                       <p-button [disabled]="!isLoginUser"
+                                 class="btn-booking"
+                                 label="Book"
+                                 [raised]="true"
+                                 severity="info"
+                       (onClick)="SubSubscriptionToOffer(item.id)"/>
+                   </div>
+
+            </div>
+
+        </div>
+        <div  class="footer">
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" *ngFor="let bus of item.buses ">
+                <div [title]="bus.registrationNumber">
+                    <img  style="height: 22px;width: 22px;color: hsla(189, 13%, 50%, 1)" src="assets/icons/bus.svg">
+
+                </div>
+                <div  fxLayout="row" style="padding-top: 4px" fxLayoutGap="10px" >
+                    <div *ngIf="bus.wifi " fxLayout="row" fxLayoutGap="5px">  <span class="pi pi-wifi"> </span> <span>wifi</span> </div>
+                    <div *ngIf="bus.airConditioning" fxLayout="row" fxLayoutGap="5px">  <span class="pi pi-sun"> </span> <span>air Conditioning</span> </div>
+                </div>
+            </div>
+        </div>
+
+    </p-card>
+
+
+</div>

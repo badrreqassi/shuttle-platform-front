@@ -1,0 +1,33 @@
+#item-offer {
+    width: 100%;
+    margin-bottom: 45px;
+    .font-bold{
+        font-weight: bold;
+    }
+    .footer{
+        margin-top: 20px;
+        span{
+            color: hsla(189, 13%, 50%, 1)!important;
+        }
+    }
+    .duration{
+       #dura-font{
+           color: hsla(189, 13%, 50%, 1)!important;
+       }
+    }
+    .time{
+        font-size: 30px;
+    }
+    .book{
+        height: 89px;
+        width: 100%;
+    }
+    .btn-booking{
+        ::ng-deep{
+            .p-button{
+                margin-left: 26px;
+                width: 100px;
+            }
+        }
+    }
+}

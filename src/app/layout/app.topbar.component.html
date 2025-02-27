@@ -1,0 +1,53 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="">
+        <img
+            src="assets/layout/images/{{
+                layoutService.config().colorScheme === 'light'
+                    ? 'logo-dark'
+                    : 'logo-white'
+            }}.svg"
+            alt="logo"
+        />
+        <span>RAHTAK</span>
+    </a>
+
+    <button
+        *ngIf="!isFilter"
+        #menubutton
+        class="p-link layout-menu-button layout-topbar-button"
+        (click)="layoutService.onMenuToggle()"
+    >
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button
+        #topbarmenubutton
+        class="p-link layout-topbar-menu-button layout-topbar-button"
+        (click)="layoutService.showProfileSidebar()"
+    >
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div
+        #topbarmenu
+        class="layout-topbar-menu"
+        [ngClass]="{
+            'layout-topbar-menu-mobile-active':
+                layoutService.state.profileSidebarVisible,
+        }"
+    >
+        <button (click)="op.toggle($event)"  class="p-link layout-topbar-button">
+            <i class="pi pi-user"></i>
+            <span>Profile</span>
+        </button>
+        <p-overlayPanel #op [style]="{ width: '200px' }">
+            <ng-template pTemplate="content">
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px" >
+                    <div  class="itemMenu" (click)="handleLogin(isLogin?2: 0)"> {{!isLogin?'Login' : 'Log out'}} </div>
+                    <div *ngIf="!isLogin" class="itemMenu" (click)="handleLogin(1)"> Sign up</div>
+                    <div *ngIf="isLogin" class="itemMenu" (click)="handleProfile()"> Profile</div>
+                </div>
+            </ng-template>
+        </p-overlayPanel>
+    </div>
+</div>

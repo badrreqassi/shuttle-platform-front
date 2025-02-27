@@ -1,0 +1,17 @@
+#create-offer{
+    padding: 20px;
+    .buses{
+        width: 100%;
+        border-top : 1px solid hsl(189, 89%, 17%);
+        margin-top: 20px ;
+        margin-bottom: 20px ;
+        border-bottom : 1px solid hsl(189, 89%, 17%);
+    }
+    ::ng-deep{
+        .p-inputwrapper {
+            width: 100%!important;
+        }
+    }
+
+}
+

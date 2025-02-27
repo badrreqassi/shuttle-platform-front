@@ -1,0 +1,49 @@
+<div id="create-bus"   fxLayout="row wrap" fxLayoutAlign="space-between center" >
+    <p-toast />
+    <div fxFlex="20%"></div>
+    <div fxFlex="60%" fxLayout="column" fxLayoutGap="10px">
+       <div fxLayout="column" fxLayoutGap="8px">
+           <div> registration Number</div>
+           <div> <input [style]="{width :'100%'}" type="text" [disabled]="true" pInputText [(ngModel)]="registrationNumber" />
+           </div>
+       </div>
+       <div fxLayout="column" fxLayoutGap="8px">
+           <div> capacity</div>
+           <div style="width: 100%"> <p-inputNumber [style]="{width:'100%'}"
+                                mode="decimal"
+                                [useGrouping]="false"
+                                [(ngModel)]="capacity" />
+           </div>
+       </div>
+        <div fxLayout="column" fxLayoutGap="8px">
+            <div> model </div>
+            <div> <input [style]="{width :'100%'}" [disabled]="true" type="text" pInputText [(ngModel)]="model" />
+            </div>
+        </div>
+        <p-fieldset legend="Description">
+           <div  fxLayout="column" fxLayoutGap="8px">
+               <div fxLayout="row" fxLayoutGap="5px">
+                   <div><p-checkbox
+                       [(ngModel)]="airConditioning"
+                       [binary]="true"
+                       inputId="binary" /></div>
+                   <div>airConditioning</div>
+               </div>
+               <div fxLayout="row" fxLayoutGap="5px">
+                   <div><p-checkbox
+                       [(ngModel)]="wifi"
+                       [binary]="true"
+                       inputId="binary" />
+                   </div>
+                   <div>wifi</div>
+               </div>
+
+           </div>
+        </p-fieldset>
+        <div  fxLayout="row" fxLayoutAlign="center center">
+            <p-button (onClick)="updateBus()" label="Update" severity="info" [raised]="true" [style]="{width:'100px'}" />
+        </div>
+    </div>
+    <div fxFlex="20" fxLayout="column" fxLayoutGap="10px">
+    </div>
+</div>

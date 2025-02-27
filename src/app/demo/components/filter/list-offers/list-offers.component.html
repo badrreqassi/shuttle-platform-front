@@ -1,0 +1,51 @@
+ <div id="list-offers" fxLayout="column" fxLayoutAlign="start center" >
+<!-- topBar-->
+     <div>  <app-topbar [isFilter]="true"></app-topbar></div>
+     <!-- search-->
+     <div style="margin-top: 80px; width:1170px ">
+<app-filter-bar [bffFilter]="bffFilter" (onFilter)="handleFilter($event)"></app-filter-bar>
+     </div>
+     <!-- results-->
+     <div style="margin-top : 10px" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="20px">
+         <div fxFlex="350px">
+             <div  fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+                 <span style="font-size: 20px;  text-decoration-line: underline;">Filter by</span>
+                 <div  *ngIf="filterList.length> 0 else noFilter" fxLayout="column" fxLayoutGap="8px" class="m-0">
+                 <div fxLayout="row" fxLayoutGap="5px">
+                     <div><p-checkbox
+                     [(ngModel)]="airConditioning"
+                     (onChange)="filterBy(wifi,airConditioning)"
+                     [binary]="true"
+                     inputId="binary" /></div>
+                     <div>airConditioning</div>
+                 </div>
+                     <div fxLayout="row" fxLayoutGap="5px">
+                     <div><p-checkbox
+                         [(ngModel)]="wifi"
+                         (onChange)="filterBy(wifi,airConditioning)"
+                         [binary]="true"
+                         inputId="binary" />
+                     </div>
+                         <div>wifi</div>
+                     </div>
+
+                 </div>
+                 <ng-template #noFilter>
+                     No filters available
+                 </ng-template>
+             </div>
+         </div>
+         <div fxFlex="800px">
+             <div class="offersTitle"> Offers from  <span>{{request.departureCity}} </span> to <span> {{request.arrivalCity}} </span></div>
+                 <div *ngIf="filterList.length> 0 else noItem">
+                     <div  fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px" class="m-0" *ngFor="let item of filterList">
+                            <app-item-offer style="width: 100%;" [item]="item"></app-item-offer>
+                     </div>
+                 </div>
+                 <ng-template #noItem>
+                     There are no rides yet for today between these cities
+                 </ng-template>
+
+         </div>
+     </div>
+ </div>

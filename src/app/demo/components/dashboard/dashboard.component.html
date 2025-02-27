@@ -1,0 +1,63 @@
+<div id="dashboard-id" class="grid" *ngIf="data" fxLayout="row wrap"  fxLayoutAlign="space-between center"  fxFlex="100%">
+    <div fxFlex="33.33%" class="col-12 lg:col-6 xl:col-3">
+        <div class="card mb-0">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+                <div > <img class="avatar" src="assets/icons/avatar-user.svg"> </div>
+                <div fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="10px" >
+                    <div fxLayout="row" fxLayoutGap="5px">
+                        <span> Email : </span>
+                        <span> {{ data.email}}</span>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="5px">
+                        <span> Username : </span>
+                        <span> {{data.username}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div  fxFlex="33.33%" class="col-12 lg:col-6 xl:col-3">
+        <div class="card mb-0">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+                <div > <img class="avatar" src="assets/icons/bell.svg"> </div>
+                <div fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="10px" >
+                    <div fxLayout="row" fxLayoutGap="5px">
+                        <span> You have  </span>
+                        <span style="color : red; font-size: 17px; font-weight: 400"> {{ data.offers.length}}</span>
+                        <span> subscriptions</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div fxFlex="33.33%"  class="col-12 lg:col-6 xl:col-3" *ngIf="company">
+        <div class="card mb-0">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+                <div > <img style="height: 50px" src="assets/icons/bus.svg"> </div>
+                <div fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="10px" >
+
+                    <div fxLayout="row" fxLayoutGap="5px">
+                        <span> The number of buses is  </span>
+                        <span style="color : red; font-size: 17px; font-weight: 400"> {{data.buses.length}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div fxFlex="100%" style="max-height: 300px" >
+        <app-subscription-list [readOnly]="true" ></app-subscription-list>
+
+    </div>
+    <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="15px">
+        <div fxFlex="calc(100% - 45%)" style="max-height: 300px; height: 300px;min-height: 300px"  >
+            <app-subscription-user-list fxFlexFill [readOnly]="true"></app-subscription-user-list>
+        </div>
+        <div *ngIf="company" fxFlex="45%" style="max-height: 300px; height: 300px;min-height: 300px" >
+            <app-list-buses fxFlexFill [readOnly]="true" ></app-list-buses>
+        </div>
+    </div>
+
+</div>

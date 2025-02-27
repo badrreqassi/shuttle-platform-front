@@ -1,0 +1,88 @@
+<div
+    id="filter-shuttles"
+    fxLayout="column"
+    fxLayoutAlign="space-between center"
+    fxFlex="100%"
+>
+    <!--header-->
+    <div>
+        <app-topbar [isFilter]="true"></app-topbar>
+    </div>
+    <!-- avatar -->
+    <div style="width: 100%" fxLayout="column" fxLayoutAlign="center center">
+        <app-avatar-filter style="width: 100%"></app-avatar-filter>
+        <div class="title">
+            <span class="svgLeft">
+                <svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <polygon points="80,10 80,90 20,50" fill="#054752" />
+                </svg>
+            </span>
+            <h1>Effortless shuttle bus management and travel</h1>
+            <h1 class="goRight">Tailored for your convenience</h1>
+            <span class="svgRight"
+                ><svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <polygon points="20,10 20,90 80,50" fill="#c4f2ff" /></svg
+            ></span>
+        </div>
+        <!-- filters -->
+           <div style="position: absolute; width: 1060px;top: 65%;left: 22%;" >
+          <app-filter-bar (filter)="onSearch($event)" ></app-filter-bar>
+        </div>
+    </div>
+
+    <div class="features-container">
+        <div class="feature">
+            <img
+                src="assets/icons/ride.svg"
+                alt="ride Icon"
+                class="feature-icon"
+            />
+
+            <h3>Your pick of rides at low prices</h3>
+            <p>
+                No matter where you're going, by bus or carpool, find the
+                perfect ride from our wide range of destinations and routes at
+                low prices.
+            </p>
+        </div>
+
+        <div class="feature">
+            <img
+                src="assets/icons/trus.svg"
+                alt="trus Icon"
+                class="feature-icon"
+            />
+            <h3>Trust who you travel with</h3>
+            <p>
+                We take the time to get to know each of our members and bus
+                partners. We check reviews, profiles, and IDs, so you know who
+                you're traveling with and can book your ride at ease on our
+                secure platform.
+            </p>
+        </div>
+
+        <div class="feature">
+            <img
+                src="assets/icons/fast.svg"
+                alt="Fast Icon"
+                class="feature-icon"
+            />
+            <h3>Scroll, click, tap and go!</h3>
+            <p>
+                Booking a ride has never been easier! Thanks to our simple app
+                powered by great technology, you can book a ride close to you in
+                just minutes.
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+<div id="busesList">
+    <div class="grid">
+        <div class="col-12">
+            <div class="card px-6 py-6">
+                <p-toast></p-toast>
+                <p-toolbar styleClass="mb-4" *ngIf="!readOnly">
+                    <ng-template pTemplate="left">
+                        <div class="my-2">
+                            <button
+                                pButton
+                                pRipple
+                                label="New"
+                                icon="pi pi-plus"
+                                class="p-button-success mr-2"
+                                (click)="createNewBuses()"
+
+                            ></button>
+                        </div>
+                    </ng-template>
+
+
+                </p-toolbar>
+
+                <p-table
+                    #dt
+                    [value]="buses"
+                    [columns]="cols"
+                    responsiveLayout="scroll"
+                    [rows]="100"
+                    [rowHover]="true"
+                    dataKey="id"
+                >
+                    <ng-template pTemplate="caption">
+                        <div
+                            class="flex flex-column md:flex-row md:justify-content-between md:align-items-center"
+                        >
+                            <h5 class="m-0">List Buses </h5>
+                            <span class="block mt-2 md:mt-0 p-input-icon-left">
+
+                        </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <ng-container  *ngFor="let h of cols">
+                                <th >
+                                    {{h.header}}
+                                </th>
+                            </ng-container>
+                            <th></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td style="width: 14%; min-width: 10rem">
+                                <span class="p-column-title">User</span>
+                                {{ product.transportCompany.username }}
+                            </td>
+                            <td style="width: 14%; min-width: 10rem">
+                                <span class="p-column-title"> Registration</span>
+                                     {{ product.registrationNumber}}
+                             </td>
+                            <td style="width: 14%; min-width: 10rem">
+                                <span class="p-column-title"> Model</span>
+                                     {{ product.model}}
+
+                            </td>
+                            <td style="width: 14%; min-width: 10rem">
+                                <span class="p-column-title"> Capacity</span>
+                                     {{ product.capacity}}
+                             </td>
+                            <td style="width: 14%; min-width: 10rem">
+                                <span class="p-column-title"> Air Conditioning</span>
+                                     {{ product.airConditioning}}
+                             </td>
+                            <td style="width: 14%; min-width: 10rem">
+                                <span class="p-column-title"> Wifi</span>
+                                     {{ product.wifi}}
+                             </td>
+                            <td style="width: 14%; min-width: 10rem">
+                                <span class="p-column-title">Start Active Date</span>
+                                {{ product.startActiveDate | date:'dd/MM/yyyy' }}
+                            </td>
+                            <td style="width: 14%; min-width: 10rem">
+                                <span class="p-column-title">End Active Date</span>
+                                {{ product.startActiveDate | date:'dd/MM/yyyy' }}
+                            </td>
+
+                            <td>
+                                <div class="flex">
+                                    <button
+                                        pButton
+                                        pRipple
+                                        icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success mr-2"
+                                        (click)="updateNewBuses(product)"
+                                    ></button>
+                                    <button
+                                        pButton
+                                        [disabled]="!!product.startActiveDate"
+                                        (click)="deleteBus(product)"
+                                        pRipple
+                                        icon="pi pi-trash"
+                                        class="p-button-rounded p-button-warning"
+                                    ></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
+

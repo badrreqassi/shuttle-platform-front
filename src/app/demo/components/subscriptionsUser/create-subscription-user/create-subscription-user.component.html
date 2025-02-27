@@ -1,0 +1,118 @@
+<div id="create-offer"  fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex="100%">
+    <p-toast></p-toast>
+    <!-- departure-->
+    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="10px" fxFlex="33.33">
+
+        <div fxLayout="column" fxLayoutGap="8px" style="width: 100%">
+            <span> Departure city </span>
+            <div>
+                <p-dropdown
+                    [style]="{ width: '100%', height: '100%' }"
+                    [options]="cities"
+                    [(ngModel)]="cityFrom"
+                    (onChange)="onChangeCityFrom()"
+                    filterBy="name"
+                    [editable]="true"
+                    [showClear]="true"
+                    appendTo="body"
+                    optionLabel="name"
+                    placeholder="Leaving from "
+                />
+            </div>
+        </div>
+        <div fxLayout="column"  fxLayoutGap="8px" style="width: 100%">
+            <span> Start date </span>
+            <div>
+                <p-calendar
+                    [style]="{ width: '100%', height: '100%' }"
+                    [(ngModel)]="startDate"
+                    (ngModelChange)="handleBusDate()"
+                    dateFormat="DD , dd MM"
+                    [showButtonBar]="true"
+                    appendTo="body"
+                    [minDate]="minDate"
+                     [readonlyInput]="true"
+                />
+            </div>
+        </div>
+        <div fxLayout="column"  fxLayoutGap="8px" style="width: 100%">
+            <span>  Departure time  </span>
+            <div>
+                <p-calendar
+                    [style]="{ width: '100%', height: '100%' }"
+                    [(ngModel)]="departureTime"
+                    [timeOnly]="true"
+                    appendTo="body"
+                    dateFormat="DD , dd MM"
+                    [showButtonBar]="true"
+                    [readonlyInput]="true"
+                />
+            </div>
+        </div>
+    </div>
+    <!-- duration-->
+    <div fxLayout="column" fxLayoutAlign="space-between center" fxFlex="33.33">
+        <div *ngIf="!departureTime || !arrivalTime else duration"> Duration </div>
+        <ng-template #duration>
+            {{ dayjs(departureTime).format('HH:mm') | dateDifference : dayjs(arrivalTime).format('HH:mm') }}
+        </ng-template>
+    </div>
+    <!-- arrival-->
+    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="10px" fxFlex="33.33">
+        <div fxLayout="column" fxLayoutGap="8px" style="width: 100%">
+            <span> Arrival city </span>
+            <div>
+                <p-dropdown
+                    [style]="{ width: '100%', height: '100%' }"
+                    [options]="arrivalCities"
+                    [(ngModel)]="arrivalCity"
+                    (onChange)="onChangeCityArrival()"
+                    filterBy="name"
+                    [editable]="true"
+                    [showClear]="true"
+                    appendTo="body"
+                    optionLabel="name"
+                    placeholder="Leaving To "
+                />
+            </div>
+        </div>
+        <div fxLayout="column"  fxLayoutGap="8px" style="width: 100%">
+            <span> End date </span>
+            <div>
+                <p-calendar
+                    [disabled]="!startDate"
+                    [style]="{ width: '100%', height: '100%' }"
+                    [(ngModel)]="endDateArrival"
+                    dateFormat="DD , dd MM"
+                    [showButtonBar]="true"
+                    (ngModelChange)="handleBusDate()"
+                    appendTo="body"
+                    [minDate]="startDate"
+                    [readonlyInput]="true"
+                />
+            </div>
+        </div>
+        <div fxLayout="column"  fxLayoutGap="8px" style="width: 100%">
+            <span>  Arrival time  </span>
+            <div>
+                <p-calendar
+                    [disabled]="!departureTime"
+                    [style]="{ width: '100%', height: '100%' }"
+                    [(ngModel)]="arrivalTime"
+                     [timeOnly]="true"
+                    appendTo="body"
+                    dateFormat="DD , dd MM"
+                    [showButtonBar]="true"
+                    [minDate]="departureTime"
+                    [readonlyInput]="true"
+                />
+            </div>
+        </div>
+    </div>
+
+    <div fxFlex="100%"  fxLayout="row" fxLayoutAlign="center center">
+        <p-button (onClick)="creatOffer()" label="Create" severity="info"  [raised]="true" [style]="{width:'100px'}" />
+    </div>
+
+</div>
+

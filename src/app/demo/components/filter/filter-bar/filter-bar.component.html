@@ -1,0 +1,72 @@
+<div
+    fxFlex="100%"
+    class="filters"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+>
+    <!-- from -->
+    <div fxFlex="calc(25% - 380px)" fxLayout="row">
+        <div fxFlex="40px">
+                    <span
+                        [class]="
+                            cityFrom ? 'pi pi-circle-fill' : 'pi pi-circle'
+                        "></span>
+        </div>
+        <div fxFlex="calc(100% - 40px)">
+            <p-dropdown
+                [style]="{ width: '100%', height: '100%' }"
+                [options]="cities"
+                [(ngModel)]="cityFrom"
+                (onChange)="onChangeCityFrom()"
+                filterBy="name"
+                [editable]="true"
+                [showClear]="true"
+                optionLabel="name"
+                placeholder="Leaving from "
+            />
+        </div>
+    </div>
+    <!-- to -->
+    <div fxFlex="calc(25% - 380px)" fxLayout="row">
+        <div fxFlex="40px">
+                    <span
+                        [class]="cityTo ? 'pi pi-circle-fill' : 'pi pi-circle'"
+                    ></span>
+        </div>
+        <div fxFlex="calc(100% - 40px)">
+            <p-dropdown
+                [style]="{ width: '100%', height: '100%' }"
+                [options]="citiesTo"
+                [(ngModel)]="cityTo"
+                (onChange)="onChangeCityTo()"
+                filterBy="name"
+                [editable]="true"
+                [showClear]="true"
+                optionLabel="name"
+                placeholder="Going to"
+            />
+        </div>
+    </div>
+    <!-- when -->
+    <div fxFlex="380px" fxLayout="row">
+        <div fxFlex="40px">
+            <span class="pi pi-calendar"></span>
+        </div>
+        <div fxFlex="340px">
+            <p-calendar
+                [style]="{ width: '100%', height: '100%' }"
+                [(ngModel)]="rangeDates"
+                dateFormat="DD , dd MM"
+                [showButtonBar]="true"
+                [minDate]="minDate"
+                selectionMode="range"
+                [readonlyInput]="true"
+            />
+        </div>
+    </div>
+
+    <!-- search -->
+    <div class="search" fxFlex="190px" (click)="search()">
+        <h5>Search</h5>
+    </div>
+</div>
